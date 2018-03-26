@@ -1,0 +1,99 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css)
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Libre+Baskerville')
+
+=size($w,$h:$w)
+  width: $w
+  height: $h
+=ab_center
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+
+*
+  font-family: 'EB Garamond',  "微軟正黑體"
+
+html,body
+  +size(100%)
+  margin: 0
+  background-color: #EAEAEA
+
+.title
+  font-size: 5em
+  display: flex
+  justify-content: center
+.infos
+  position: fixed
+  left: 50px
+  bottom: 50px
+  z-index: 10
+  h3
+    opacity: 0.4
+.mouseText
+  position: fixed
+  left: 50px
+  top: 150px
+  font-size: 1.2em
+  color: red
+.mouseSymbol
+  position: absolute
+  pointer-events: none
+  z-index: 100
+  &:before,&:after
+    content: ""
+    display: block
+    +size(40px,8px)
+    background-color: #222
+    +ab_center
+  &:after
+    transform: translate(-50%,-50%) rotate(90deg)
+.target
+  +ab_center
+.target.moving
+  @keyframes moving
+    0%
+      transform: translate(-200px)
+    100%
+      transform: translate(200px)
+  animation: moving 1s infinite alternate
+.spot
+  position: absolute
+  +size(15px)
+  border-radius: 50%
+  background-color: rgba(red,0.4)
+  z-index: 50
+  pointer-events: none
+[class^=cir]
+  +size(500px)
+  +ab_center
+  transition: 0.5s
+  border-radius: 50%
+  background-color: #D9FAFF
+  border: 10px solid white
+  box-shadow: 0px 0px 50px rgba(black,0.3)
+  &:nth-child(2n+1)
+    background-color: #22559c
+  &:active
+    transition: 0s
+    filter: brightness(80%)
+  &:before
+    content: attr(data-label)
+    color: rgba(black,0.7)
+    +ab_center
+    top: 20px
+
+  &.cir1
+    +size(100px)
+    z-index: 5
+  &.cir2
+    +size(200px)
+    z-index: 4
+  &.cir3
+    +size(300px)
+    z-index: 3
+  &.cir4
+    +size(400px)
+    z-index: 2
+  &.cir5
+    +size(500px)
+    z-index: 1
